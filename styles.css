@@ -1,0 +1,82 @@
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+/* Gradient background */
+body {
+  background: linear-gradient(to bottom, #333, #111);
+  background-size: 100% 200px;
+  color: #fff;
+  font-family: "Helvetica Neue", sans-serif;
+  background-image: url("media/Flag-Albania.webp");
+  background-size: cover;
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-attachment: fixed;
+}
+
+/* Header and navigation styles */
+header {
+  background: linear-gradient(to bottom, #333, #111);
+  color: #f00;
+  text-align: center;
+  padding: 20px 0;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+nav {
+  background: rgba(0, 0, 0, 0.6);
+  border-top: 2px solid #f00;
+  text-align: center;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f00;
+  font-weight: bold;
+  transition: color 0.3s;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+nav a:hover {
+  color: #fff;
+}
+.quote-card {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+
+  color: rgb(2, 2, 2);
+  background-color: rgb(228, 41, 41);
+}
+.cinema-card {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  color: rgb(2, 2, 2);
+  background-color: rgb(228, 41, 41);
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .box {
+        width: 500px;
+        height: 500px;
+        border: 1px solid #000;
+        position: relative;
+        overflow: hidden; /* Ensures the circles don't go beyond the box */
+      }
+
+      .circle {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        top: 0; /* Start position at the top */
+      }
+
+      .obstacle {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="obstacle" style="left: 200px; top: 200px"></div>
+      <div class="obstacle" style="left: 300px; top: 300px"></div>
+    </div>
+    <button id="addCircleButton">Add Circle</button>
+    <button id="addTenBallsButton">Add 10 Balls</button>
+    <audio
+      id="collisionSound"
+      src="Dodgeball sound effects.mp3"
+      preload="auto"
+    ></audio>
+
+    <script>
+      const box = document.querySelector(".box");
+      const obstacles = document.querySelectorAll(".obstacle");
+
+      document
+        .getElementById("addCircleButton")
+        .addEventListener("click", function () {
+          addRandomCircle();
+        });
+      document
+        .getElementById("addTenBallsButton")
+        .addEventListener("click", function () {
+          for (let i = 0; i < 10; i++) {
+            addRandomCircle();
+          }
+        });
+
+      function addRandomCircle() {
+        const circle = document.createElement("div");
+        circle.className = "circle";
+        const randomColor = getRandomColor();
+        const randomX = getRandomPosition(0, 480); // Adjust as needed
+        const randomY = getRandomPosition(0, 480); // Adjust as needed
+
+        circle.style.backgroundColor = randomColor;
+        circle.style.left = randomX + "px";
+        circle.style.top = randomY + "px";
+        box.appendChild(circle);
+
+        // Animate the circle falling and bouncing
+        animateCircle(circle);
+      }
+
+      function animateCircle(circle) {
+        const speed = 0; // Adjust the falling speed
+        const gravity = 0.2; // Adjust the gravity force
+        let velocityY = 10; // Initial vertical velocity
+        let positionY = parseInt(circle.style.top) || 0;
+        let velocityX = 5; // Initial horizontal velocity
+        let positionX = parseInt(circle.style.left) || 0;
+
+        function step() {
+          velocityY += gravity;
+          positionY += velocityY;
+          circle.style.top = positionY + "px";
+          positionX += velocityX;
+          circle.style.left = positionX + "px";
+
+          // Check for collision with the top of the screen
+          if (positionY < 0) {
+            velocityY *= -0.9; // Bounce off the top
+            positionY = 0;
+          }
+
+          // Check for collision with the bottom of the box
+          if (positionY + circle.clientHeight > box.clientHeight) {
+            velocityY *= -0.9; // Bounce off the bottom with velocity loss
+            positionY = box.clientHeight - circle.clientHeight;
+
+            // Play the collision sound
+            playCollisionSound();
+          }
+          // Check for collisions with obstacles
+          obstacles.forEach((obstacle) => {
+            const rect1 = circle.getBoundingClientRect();
+            const rect2 = obstacle.getBoundingClientRect();
+            if (
+              rect1.top + rect1.height > rect2.top &&
+              rect1.top < rect2.top + rect2.height &&
+              rect1.left + rect1.width > rect2.left &&
+              rect1.left < rect2.left + rect2.width
+            ) {
+              // Handle collision with obstacles
+              velocityY *= -0.9; // Bounce off the obstacle vertically
+              positionY = rect2.top - rect1.height;
+              velocityX *= -0.9; // Bounce horizontally
+              positionX = rect2.left + rect2.width;
+
+              // Change the obstacle's color on collision
+              obstacle.style.backgroundColor = getRandomColor();
+            }
+          });
+
+          // Check for collision with the left and right edges
+          if (
+            positionX < 0 ||
+            positionX + circle.clientWidth > box.clientWidth
+          ) {
+            velocityX *= -0.9; // Bounce off the sides with velocity loss
+            if (positionX < 0) positionX = 0;
+            if (positionX + circle.clientWidth > box.clientWidth) {
+              positionX = box.clientWidth - circle.clientWidth;
+            }
+          }
+
+          requestAnimationFrame(step);
+        }
+
+        // Apply initial random horizontal and vertical velocity
+        velocityX = (Math.random() - 0.5) * 10;
+        velocityY = (Math.random() - 0.5) * 10;
+        requestAnimationFrame(step);
+      }
+
+      function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      function getRandomPosition(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      function playCollisionSound() {
+        const collisionSound = document.getElementById("collisionSound");
+        collisionSound.currentTime = 1; // Reset the sound to the beginning
+        collisionSound.play();
+      }
+    </script>
+  </body>
+</html>

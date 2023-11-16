@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Patriot Shqipetar</title>
+    <style>
+      .shperberja {
+        width: 500px;
+        height: auto;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        text-shadow: 2px;
+        background-color: rgb(255, 115, 0);
+      }
+      .video-background {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+      #myvid {
+        width: 400px;
+        height: auto;
+        position: absolute;
+        top: 420px; /* Adjust top value as needed */
+        left: 500px; /* Adjust left value as needed */
+      }
+
+      #myvid1 {
+        width: 400px;
+        height: auto;
+        position: absolute;
+        top: 200px; /* Adjust top value as needed */
+        left: 0; /* Adjust left value as needed */
+      }
+
+      #myvid2 {
+        width: 400px;
+        height: auto;
+        position: absolute;
+        top: 200px; /* Adjust top value as needed */
+        right: 0; /* Adjust left value as needed */
+      }
+
+      #myvid3 {
+        width: 400px;
+        height: auto;
+        position: absolute;
+        top: 0px; /* Adjust top value as needed */
+        left: 500px; /* Adjust left value as needed */
+      }
+
+      #myVideo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .content {
+        position: relative;
+        z-index: 1;
+      }
+
+      #myVideo {
+        z-index: 0;
+      }
+      .tekst {
+        display: none;
+        margin: 20px;
+        padding: 5px;
+        border: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Albanian Patriot</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Faqja kryesore</a></li>
+        <li><a href="history.html">Historia</a></li>
+        <li><a href="quotes.html">Shprehje</a></li>
+        <li><a href="pics.html">Foto</a></li>
+        <li><a href="filma.html">Filma</a></li>
+      </ul>
+    </nav>
+
+    <div class="video-background">
+      <div class="content" id="content" style="display: none">
+        <section id="home">
+          <h2>PERSHENDETJE</h2>
+          <div class="vid1">
+            <p>T-59 TANK</p>
+            <video controls id="myvid">
+              <source src="media/vids/1h.mp4" type="video/mp4" />
+            </video>
+            <video controls id="myvid1">
+              <source src="media/vids/videoplayback.mp4" type="video/mp4" />
+            </video>
+            <video controls id="myvid2">
+              <source src="media/vids/h3.mp4" type="video/mp4" />
+            </video>
+            <video controls id="myvid3">
+              <source src="media/vids/h4.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </section>
+      </div>
+      <video autoplay controls loop id="myVideo">
+        <source src="media/vids/2h.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="tekst" id="text">
+      <h1>Historia e Ilirisë</h1>
+      <div class="p1">
+        <h2>Ilirët: Periudha e Hershme</h2>
+        <p>
+          Ilirët ishin një popullsi e lashtë që banonin në Ballkanin lindor dhe
+          të mesëm. Ata kishin një kulturë dhe gjuhë të tyre specifike.
+          Shpërndanin jashtë gjirit të Adriatikut dhe krijuan disa fise të
+          ndryshme. Kjo periudhë e përkon me periudhën e hershme të historisë së
+          Ilirisë.
+        </p>
+      </div>
+      <div class="p2">
+        <h2>Periudha e Lidhjes Ilire</h2>
+        <p>
+          Në shekullin e 2 BC, një pjesë e madhe e Ilirisë bashkua nën një
+          entitet të madh politik quhet "Lidhja Ilire." Ky ishte një kohë e
+          rëndësishme për Ilirinë, dhe ky entitet përfshinte shumicën e
+          territorit të tyre. Lidhja Ilire u zhvillua nën udhëheqjen e
+          personaliteteve të njohura si Genti, teksa shënoi një periudhë të
+          zhvillimit të tyre kulturor.
+        </p>
+      </div>
+
+      <h2>Pushtimi Romak</h2>
+      <p>
+        Në vitin 168 BC, Iliria u pushtua nga Romak nën udhëheqjen e udhëheqësit
+        romak, Konsuli Marcus Lucullus. Ky pushtim solli një ndryshim dramatik
+        në jetën e Ilirëve dhe në territorin e tyre. Pushtimi romak solli
+        ndryshime në gjuhë, kulturë, dhe administratën në Iliri. Iliria u bë një
+        pjesë e Perandorisë Romake.
+      </p>
+
+      <h2>Periudha e Rënies së Perandorisë Romake</h2>
+      <p>
+        Në shekullin 5-6, me rënien e Perandorisë Romake, Iliria hyri në një
+        periudhë të ndikimeve të shumta politike dhe lëvizjeve të fiseve
+        barbare. Rajoni u përfshi në konflikte të shumta dhe ndryshime të mëdha
+        politike. Në këtë periudhë, shumë fise barbare vendosën në rajon.
+      </p>
+      <br />
+      <div class="shperberja">
+        <h2>Shpërbërja e Ilirisë</h2>
+        <p>
+          Në shekullin 7-8, shpërbërja e Ilirisë u bë e pandalshme me pushtues
+          të ndryshëm dhe lëvizje të fiseve barbare. Iliria u nda në një numër
+          shtetesh të vegjël dhe periudha e saj e pavarësisë përfundoi.
+        </p>
+      </div>
+    </div>
+    <script>
+      var video = document.getElementById("myVideo");
+      var content = document.getElementById("content");
+      var text = document.getElementById("text");
+
+      // hesht videon edhe nxjerr infromacionin
+      function showContent() {
+        content.style.display = "block";
+        video.muted = true;
+      }
+
+      // vidoet
+      setTimeout(showContent, 35000);
+
+      // kjo per tekstin
+      setTimeout(function () {
+        text.style.display = "block";
+      }, 1000);
+    </script>
+  </body>
+</html>
